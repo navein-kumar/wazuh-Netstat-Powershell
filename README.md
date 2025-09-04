@@ -68,5 +68,46 @@ Get-Service NetstatService
 ✅ The service should now be installed, configured, and running as **Network Monitor Service**.
 
 ---
+## Step 6: Configure Wazuh Agent (`ossec.conf`)
 
-Would you like me to also add a **diagram (flowchart in ASCII/text)** showing the steps visually for quick reference inside the README?
+On the Wazuh agent, add the following configuration to monitor the Netstat JSON logs:
+
+```xml
+<localfile>
+  <location>C:\logs\netstat\netstat*.json</location>
+  <log_format>json</log_format>
+</localfile>
+---
+## Step 7: add Custom rules Wazuh manager (`netstat.xml`)
+<group name="windows,netstat,network">
+
+  <!-- Base netstat rule -->
+  <rule id="100101" level="3">
+    <decoded_as>json</decoded_as>
+    <field name="netstat_type">netstat</field>
+    <description>Windows netstat: Network connection detected</description>
+  </rule>
+
+  <!-- Listening services -->
+  <rule id="100102" level="4">
+    <if_sid>100101</if_sid>
+    <field name="netstat_state_name">Listen</field>
+    <description>Windows netstat: Service listening on port $(netstat_lport)</description>
+  </rule>
+
+  <!-- External connections -->
+  <rule id="100103" level="5">
+    <if_sid>100101</if_sid>
+    <field name="netstat_is_external">true</field>
+    <field name="netstat_state_name">Established</field>
+    <description>Windows netstat: External connection to $(netstat_remote_ip):$(netstat_rport)</description>
+  </rule>
+
+  <!-- Suspicious ports -->
+  <rule id="100104" level="7">
+    <if_sid>100101</if_sid>
+    <field name="netstat_rport">22|23|3389|5900|4444|1337</field>
+    <description>Windows netstat: Connection to suspicious port $(netstat_rport)</description>
+  </rule>
+
+</group>

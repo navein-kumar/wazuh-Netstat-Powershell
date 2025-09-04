@@ -77,6 +77,7 @@ On the Wazuh agent, add the following configuration to monitor the Netstat JSON 
   <location>C:\logs\netstat\netstat*.json</location>
   <log_format>json</log_format>
 </localfile>
+```
 ---
 ## Step 7: add Custom rules Wazuh manager (`netstat.xml`)
 <group name="windows,netstat,network">
@@ -111,3 +112,4 @@ On the Wazuh agent, add the following configuration to monitor the Netstat JSON 
   </rule>
 
 </group>
+```

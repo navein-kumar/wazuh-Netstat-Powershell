@@ -1,4 +1,4 @@
-$LogPath = "C:\logs\netstat"
+$LogPath = "C:\netstat\logs"
 $MaxLogSizeMB = 50
 $MaxLogFiles = 5
 
@@ -186,4 +186,5 @@ while ($true) {
     }
     
     Start-Sleep 60
+
 }

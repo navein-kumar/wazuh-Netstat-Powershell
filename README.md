@@ -74,7 +74,7 @@ On the Wazuh agent, add the following configuration to monitor the Netstat JSON 
 
 ```xml
 <localfile>
-  <location>C:\logs\netstat\netstat*.json</location>
+  <location>C:\netstat\logs\netstat*.json</location>
   <log_format>json</log_format>
 </localfile>
 ```

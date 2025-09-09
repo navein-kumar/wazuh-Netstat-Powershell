@@ -8,13 +8,13 @@ This guide explains how to install and configure the **NetstatService** using [N
 ## Prerequisites
 - Windows system with PowerShell available
 - `nssm.exe` downloaded and placed in your working directory
-- `netstat-service.ps1` script located in `C:\Scripts\`
+- `netstat-service.ps1` script located in `C:\netstat\`
 
 ---
 
 ## Step 1: Navigate to the Working Directory
 ```powershell
-cd C:\Scripts\
+cd C:\netstat\
 ````
 
 ---
@@ -24,7 +24,7 @@ cd C:\Scripts\
 Run the following command (replace paths with your actual ones):
 
 ```powershell
-.\nssm.exe install NetstatService powershell.exe "-ExecutionPolicy Bypass -File C:\Scripts\netstat-service.ps1"
+.\nssm.exe install NetstatService powershell.exe "-ExecutionPolicy Bypass -File C:\netstat\netstat-service.ps1"
 ```
 
 ---

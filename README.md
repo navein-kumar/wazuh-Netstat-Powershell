@@ -25,25 +25,9 @@ Run the following command (replace paths with your actual ones):
 
 ```powershell
 .\nssm.exe install NetstatService powershell.exe "-ExecutionPolicy Bypass -File C:\netstat\netstat-service.ps1"
-```
-
----
-
-## Step 3: Configure Service Parameters
-
-Set the display name, description, and startup type:
-
-```powershell
 .\nssm.exe set NetstatService DisplayName "Network Monitor Service"
 .\nssm.exe set NetstatService Description "Monitors network connections for Wazuh"
 .\nssm.exe set NetstatService Start SERVICE_AUTO_START
-```
-
----
-
-## Step 4: Start the Service
-
-```powershell
 .\nssm.exe start NetstatService
 ```
 

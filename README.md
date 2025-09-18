@@ -1,5 +1,4 @@
 ```
 download and run as admin 
-netstat-service.ps1
-
+install-netstat-service.bat
 ```
